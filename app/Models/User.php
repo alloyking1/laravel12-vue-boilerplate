@@ -49,13 +49,13 @@ class User extends Authenticatable
         ];
     }
 
-    public function teams()
+    public function isTeamOwner()
     {
         return $this->hasMany(Team::class);
     }
 
-    public function teamMembers()
-    {
-        return $this->hasMany(TeamMember::class);
-    }
+    // public function teamMembers()
+    // {
+    //     return $this->hasMany(TeamMember::class);
+    // }
 }

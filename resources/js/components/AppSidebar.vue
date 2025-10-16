@@ -33,29 +33,24 @@ const mainNavItems: NavItem[] = [
         href: '/teams',
         icon: Users,
     },
-    {
-        title: 'Teams Dropdown',     
-        href: '#',
-        icon: Users,
-        isDropdown: true,
-        dropdownItems: [
-            {
-                title: 'Team A',
-                href: '#',
-                icon: Users,
-            },
-            {
-                title: 'Team B',
-                href: '#',
-                icon: Users,
-            },
-        ],
-    },
-    {
-        title: 'Teams second',
-        href: '#',
-        icon: Users,
-    },
+    // {
+    //     title: 'Teams Dropdown',     
+    //     href: '#',
+    //     icon: Users,
+    //     isDropdown: true,
+    //     dropdownItems: [
+    //         {
+    //             title: 'Team A',
+    //             href: '/teams',
+    //             icon: Users,
+    //         },
+    //         {
+    //             title: 'Team B',
+    //             href: '#',
+    //             icon: Users,
+    //         },
+    //     ],
+    // },
 ];
 
 const footerNavItems: NavItem[] = [
@@ -73,31 +68,28 @@ const footerNavItems: NavItem[] = [
 </script>
 
 <template>
-    <!-- <Collapsible defaultOpen class="group/collapsible"> -->
-        <Sidebar collapsible="icon" variant="inset">
-        <!-- <Sidebar collapsible="offcanvas" variant="floating"> -->
-            <SidebarHeader>
-                <SidebarMenu>
-                    <SidebarMenuItem>
-                        <SidebarMenuButton size="lg" as-child>
-                            <Link :href="dashboard()">
-                                <AppLogo />
-                            </Link>
-                        </SidebarMenuButton>
-                    </SidebarMenuItem>
-                </SidebarMenu>
-            </SidebarHeader>
+    <Sidebar collapsible="icon" variant="inset">
+    <!-- <Sidebar collapsible="offcanvas" variant="floating"> -->
+        <SidebarHeader>
+            <SidebarMenu>
+                <SidebarMenuItem>
+                    <SidebarMenuButton size="lg" as-child>
+                        <Link :href="dashboard()">
+                            <AppLogo />
+                        </Link>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
+            </SidebarMenu>
+        </SidebarHeader>
 
-            <SidebarContent>
-                <NavMain :items="mainNavItems" />
-            </SidebarContent>
+        <SidebarContent>
+            <NavMain :items="mainNavItems" />
+        </SidebarContent>
 
-            <SidebarFooter>
-                <NavFooter :items="footerNavItems" />
-                <NavUser />
-            </SidebarFooter>
-        </Sidebar>
-    <!-- </Collapsible> -->
-    
+        <SidebarFooter>
+            <NavFooter :items="footerNavItems" />
+            <NavUser />
+        </SidebarFooter>
+    </Sidebar>
     <slot />
 </template>

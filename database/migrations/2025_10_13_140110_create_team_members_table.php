@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('team_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('department')->nullable();
+            $table->string('status')->default('active');
             $table->string('role')->default('member');
             $table->timestamps();
         });

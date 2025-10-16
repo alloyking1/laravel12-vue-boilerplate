@@ -32,68 +32,89 @@ const page = usePage();
         <SidebarGroupLabel>Platform</SidebarGroupLabel>
         <SidebarMenu>
             <SidebarMenuItem v-for="item in items" :key="item.title">
-                
+                <Collapsible v-model:open="isOpen">
                     <SidebarMenuButton
                         as-child
                         :is-active="urlIsActive(item.href, page.url)"
                         :tooltip="item.title"
                     >
                         
-                        <Link :href="item.href">
+                        <CollapsibleTrigger v-if="item.dropdownItems" asChild>
+                            <span>
+                                <component :is="item.icon" />
+                                <span>{{ item.title }}</span>
+                                <ChevronsUpDown class="h-4 w-4" />
+                            </span>
+                        </CollapsibleTrigger>
+                        
+                        <Link :href="item.href" v-else>
                             <component :is="item.icon" />
                             <span>{{ item.title }}</span>
                         </Link>
 
-                        <div v-if="item.dropdownItems">
-                            {{ item.dropdownItems }}
-                        </div>
-                    </SidebarMenuButton>
+                        <CollapsibleContent>
+                            <SidebarMenuItem v-for="each in item.dropdownItems" :key="item.title">
+                                <SidebarMenuButton
+                                    as-child
+                                >
+                                    <Link :href="each.href" class="ml-4">
+                                        <component :is="each.icon" />
+                                        <span>{{ each.title }}</span>
+                                    </Link>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                        </CollapsibleContent>
 
-                    <!-- drop down component goes here -->
+                        
+                    </SidebarMenuButton>
+                </Collapsible>
+                <!-- drop down component goes here -->
             </SidebarMenuItem>
 
-            <Collapsible v-model:open="isOpen">
-                <CollapsibleTrigger>
-                    <!-- Can I use this in my project? -->
-                    <Button variant="ghost" size="sm" class="w-9 p-0">
-                        <ChevronsUpDown class="h-4 w-4" />
-                        <span class="sr-only">Toggle</span>
-                    </Button>
-                </CollapsibleTrigger>
-                <CollapsibleContent>
-                Yes. Free to use for personal and commercial projects. No attribution
-                required.
-                </CollapsibleContent>
-            </Collapsible>
-
-            <!-- <CollapsibleTrigger asChild>
-                <SidebarMenuButton />
-            </CollapsibleTrigger>
-
-            <CollapsibleContent>
-                <SidebarMenuSub>
-                    <SidebarMenuSubItem />
-                </SidebarMenuSub>
-            </CollapsibleContent> -->
-
         </SidebarMenu>
-    </SidebarGroup>
 
-    <!-- <SidebarGroup class="px-2 py-0">
+        <!-- <div class="my-2"></div>
         <SidebarGroupLabel>Settings</SidebarGroupLabel>
         <SidebarMenu>
             <SidebarMenuItem v-for="item in items" :key="item.title">
-                <SidebarMenuButton
-                    as-child
-                    :is-active="urlIsActive(item.href, page.url)"
-                    :tooltip="item.title"
-                >
-                    <Link :href="item.href">
-                        <component :is="item.icon" />
-                        <span>{{ item.title }}</span>
-                    </Link>
-                </SidebarMenuButton>
+                <Collapsible v-model:open="isOpen">
+                    <SidebarMenuButton
+                        as-child
+                        :is-active="urlIsActive(item.href, page.url)"
+                        :tooltip="item.title"
+                    >
+                        
+                        <CollapsibleTrigger v-if="item.dropdownItems" asChild>
+                            <span>
+                                <component :is="item.icon" />
+                                <span>{{ item.title }}</span>
+                                <ChevronsUpDown class="h-4 w-4" />
+                            </span>
+                        </CollapsibleTrigger>
+                        
+                        <Link :href="item.href" v-else>
+                            <component :is="item.icon" />
+                            <span>{{ item.title }}</span>
+                        </Link>
+
+                        <CollapsibleContent>
+                            <SidebarMenuItem v-for="each in item.dropdownItems" :key="item.title">
+                                <SidebarMenuButton
+                                    as-child
+                                >
+                                    <Link :href="each.href" class="ml-4">
+                                        <component :is="each.icon" />
+                                        <span>{{ each.title }}</span>
+                                    </Link>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                        </CollapsibleContent>
+
+                        
+                    </SidebarMenuButton>
+                </Collapsible>
             </SidebarMenuItem>
-        </SidebarMenu>
-    </SidebarGroup> -->
+        </SidebarMenu> -->
+
+    </SidebarGroup>
 </template>
