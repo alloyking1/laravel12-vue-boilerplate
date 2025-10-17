@@ -13,7 +13,7 @@ Route::get('dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::prefix('/teams')->middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', [TeamController::class, 'create'])->name('teams.create');
+    Route::get('/create', [TeamController::class, 'create'])->name('teams.create');
 });
 
 require __DIR__.'/settings.php';

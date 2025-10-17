@@ -2,18 +2,16 @@
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
 import NavUser from '@/components/NavUser.vue';
-import {
-    Sidebar,
-    SidebarContent,
+import {Sidebar,SidebarContent,
     SidebarFooter,
     SidebarHeader,
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard } from '@/routes';
+import { dashboard, teamsCreate } from '@/routes';
 import { type NavItem } from '@/types';
-import { Link } from '@inertiajs/vue3';
+import { Link, router } from '@inertiajs/vue3';
 import { BookOpen, Folder, LayoutGrid, Users } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
 import {
@@ -21,7 +19,13 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@/components/ui/collapsible'
+// import { on } from 'events';
+import { onMounted } from 'vue';
 
+
+onMounted(()=> {
+    
+})
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
@@ -30,27 +34,10 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Teams',
-        href: '/teams',
+        // href: '/teams/create',
+        href: teamsCreate(),
         icon: Users,
-    },
-    // {
-    //     title: 'Teams Dropdown',     
-    //     href: '#',
-    //     icon: Users,
-    //     isDropdown: true,
-    //     dropdownItems: [
-    //         {
-    //             title: 'Team A',
-    //             href: '/teams',
-    //             icon: Users,
-    //         },
-    //         {
-    //             title: 'Team B',
-    //             href: '#',
-    //             icon: Users,
-    //         },
-    //     ],
-    // },
+    }
 ];
 
 const footerNavItems: NavItem[] = [
@@ -65,6 +52,7 @@ const footerNavItems: NavItem[] = [
         icon: BookOpen,
     },
 ];
+
 </script>
 
 <template>

@@ -31,8 +31,7 @@ class TeamController extends Controller
         $teams = $teamService->getTeams();
         $hasTeam = $teams->isNotEmpty();
 
-        return Inertia::render(
-            $hasTeam ? 'teams/Dashboard' : 'teams/Create',
+        return Inertia::render('teams/Create',
             [
                 'teams' => $teams,
                 'isTeamOwner' => $hasTeam,
