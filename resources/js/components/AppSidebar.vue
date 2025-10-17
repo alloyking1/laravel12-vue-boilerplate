@@ -9,23 +9,16 @@ import {Sidebar,SidebarContent,
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard, teamsCreate } from '@/routes';
+import { dashboard, test } from '@/routes';
+import TeamController from "@/actions/App/Http/Controllers/TeamController";
+
 import { type NavItem } from '@/types';
 import { Link, router } from '@inertiajs/vue3';
 import { BookOpen, Folder, LayoutGrid, Users } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from '@/components/ui/collapsible'
-// import { on } from 'events';
+
 import { onMounted } from 'vue';
 
-
-onMounted(()=> {
-    
-})
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
@@ -34,10 +27,9 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Teams',
-        // href: '/teams/create',
-        href: teamsCreate(),
+        href: TeamController.create(),
         icon: Users,
-    }
+    },
 ];
 
 const footerNavItems: NavItem[] = [

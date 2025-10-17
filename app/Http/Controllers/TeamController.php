@@ -10,22 +10,6 @@ use App\Services\TeamService;
 
 class TeamController extends Controller
 {
-    // public function create(Request $request, TeamService $teamService): RedirectResponse|Response
-    // {
-    //     $teamOwner = $teamService->getTeams();
-
-    //     // 
-    //     if($teamOwner->isEmpty()) {
-    //         return inertia::render('teams/Create',[
-    //             'isTeamOwner' => $teamOwner
-    //         ]);
-    //     }else{
-    //         return inertia::render('teams/dashboard',[
-    //             'isTeamOwner' => $teamOwner
-    //         ]);
-    //     }
-    // }
-
     public function create(Request $request, TeamService $teamService): RedirectResponse|Response
     {
         $teams = $teamService->getTeams();
