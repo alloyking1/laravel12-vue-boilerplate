@@ -54,8 +54,8 @@ class User extends Authenticatable
         return $this->hasMany(Team::class);
     }
 
-    // public function teamMembers()
-    // {
-    //     return $this->hasMany(TeamMember::class);
-    // }
+    public function hasBusiness()
+    {
+        return $this->hasMany(Business::class);
+    }
 }

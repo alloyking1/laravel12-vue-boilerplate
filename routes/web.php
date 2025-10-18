@@ -12,12 +12,7 @@ Route::get('dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::prefix('teams')
-  ->middleware(['auth', 'verified'])
-  ->group(function () {
-      Route::get('/create', [TeamController::class, 'create'])
-        ->name('teams.create');
-  });
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
+require __DIR__.'/business.php';
