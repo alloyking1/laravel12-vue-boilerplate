@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Services\BusinessService;
+use App\Http\Requests\BusinessControllerRequest;
 
 class BusinessController extends Controller
 {
@@ -16,8 +17,9 @@ class BusinessController extends Controller
         ]);
     }
 
-    public function store(Request $request, $id = null){
-        // update or create
+    public function store(BusinessControllerRequest $request, BusinessService $businessService, $id = null){
+
+        $newBusiness = $businessService->updateOrCreate($request, $id);
         return redirect()->back()->with('message', 'Business created successfully');
     }
 }

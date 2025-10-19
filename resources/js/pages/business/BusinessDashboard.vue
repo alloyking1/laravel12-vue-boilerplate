@@ -10,11 +10,11 @@ import business from '@/routes/business';
 import { onMounted } from 'vue';
 
 
-const props = defineProps <
+const props = defineProps<
     {
         business: any
     }
->() 
+>()
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -24,11 +24,11 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 onMounted(() => {
-  console.log(hasBusiness());
+    console.log(hasBusiness());
 });
 
 const hasBusiness = () => {
-    if(props.business.length > 0) {
+    if (props.business.length > 0) {
         return true;
     }
     return false;
@@ -36,13 +36,13 @@ const hasBusiness = () => {
 </script>
 
 <template>
+
     <Head title="Business" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
             <div
-                class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border"
-                >
+                class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border">
                 <div v-if="!hasBusiness()">
                     <CreateBusiness />
                 </div>
